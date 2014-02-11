@@ -2,13 +2,14 @@
 public class Main {
 	
 	public static void main(String args[]){
-		new MyThread("First Thread");
-		new MyThread("Second Thread");
-		new MyThread("Third Thread");
-		new MyThread("Fourth Thread");
-		new MyThread("Fifth Thread");
-		new MyThread("Sixth Thread");
-		new MyThread("Seventh Thread");
-		new MyThread("Eight Thread");
+		MyThread threads[] = new MyThread[8];
+		for(int i = 0; i < threads.length; i++){
+			String name = "Thread #" + i;
+			threads[i] = new MyThread(name);
+		}
+		for(int i = 0; i < threads.length; i++){
+			threads[i].join();
+		}
+		System.out.println("Main thread closing.");
 	}
 }
